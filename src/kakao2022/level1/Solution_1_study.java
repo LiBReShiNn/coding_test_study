@@ -196,8 +196,6 @@ class Solution_1_study {
         IntStream intStream3 = intStream1.sequential(); // default는 순차 수행
         isParallel = intStream3.isParallel(); // false
 
-        // https://futurecreator.github.io/2018/08/26/java-8-streams/ 스트림 연결하기 부터
-
 
 
         List<String> list = Arrays.stream(report).distinct().collect(Collectors.toList());
