@@ -196,9 +196,63 @@ class Solution_1_study {
         IntStream intStream3 = intStream1.sequential(); // default는 순차 수행
         isParallel = intStream3.isParallel(); // false
 
+//        스트림 연결하기
+//        Stream.concat 메소드를 이용해 두 개의 스트림을 연결해서 새로운 스트림을 만들어낼 수 있습니다.
+        Stream<String> stream2 = Stream.of("muzi", "frodo", "neo", "apeach");
+        Stream<String> stream3 = Stream.of("hi", "iam", "fine", "thank you", "and you");
+        Stream<String> concatStream = Stream.concat(stream2, stream3);
+
+//        가공하기
+//        전체 요소 중에서 다음과 같은 API 를 이용해서 내가 원하는 것만 뽑아낼 수 있습니다.
+//        이러한 가공 단계를 중간 작업(intermediate operations)이라고 하는데,
+//        이러한 작업은 스트림을 리턴하기 때문에 여러 작업을 이어 붙여서(chaining) 작성할 수 있습니다.
+
+        List<String> names = Arrays.asList(arr1);
+
+//        Filtering
+//        필터(filter)은 스트림 내 요소들을 하나씩 평가해서 걸러내는 작업입니다.
+//        인자로 받는 Predicate 는 boolean 을 리턴하는 함수형 인터페이스로 평가식이 들어가게 됩니다.
+//        Stream<T> filter(Predicate<? super T> predicate);
+
+//        간단한 예제입니다.
+
+        Stream<String> stream4 = names.stream().filter(name -> name.contains("a")); // [apeach]
+//        스트림의 각 요소에 대해서 평가식을 실행하게 되고 ‘a’ 가 들어간 이름만 들어간 스트림이 리턴됩니다.
+
+//        Mapping
+//        맵(map)은 스트림 내 요소들을 하나씩 특정 값으로 변환해줍니다. 이 때 값을 변환하기 위한 람다를 인자로 받습니다.
+//        <R> Stream<R> map(Function<? super T, ? extends R> mapper);
+
+//        스트림에 들어가 있는 값이 input 이 되어서 특정 로직을 거친 후 output 이 되어 (리턴되는) 새로운 스트림에 담기게 됩니다.
+//        이러한 작업을 맵핑(mapping)이라고 합니다.
+
+//        간단한 예제입니다. 스트림 내 String 의 toUpperCase 메소드를 실행해서 대문자로 변환한 값들이 담긴 스트림을 리턴합니다.
+
+        Stream<String> stream5 = names.stream().map(String::toUpperCase);
 
 
-        List<String> list = Arrays.stream(report).distinct().collect(Collectors.toList());
+//        다음처럼 요소 내 들어있는 Product 개체의 수량을 꺼내올 수도 있습니다. 각 ‘상품’을 ‘상품의 수량’으로 맵핑하는거죠.
+//        다음처럼 요소 내 들어있는 Product 개체의 수량을 꺼내올 수도 있습니다. 각 ‘상품’을 ‘상품의 수량’으로 맵핑하는거죠.
+//        다음처럼 요소 내 들어있는 Product 개체의 수량을 꺼내올 수도 있습니다. 각 ‘상품’을 ‘상품의 수량’으로 맵핑하는거죠.
+
+        Stream<Integer> stream = productList.stream().map(Product::getccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                List<String> list = Arrays.stream(report).distinct().collect(Collectors.toList());
         HashMap<String, Integer> count = new HashMap<>();
         for (String s : list) {
             String target = s.split(" ")[1];
