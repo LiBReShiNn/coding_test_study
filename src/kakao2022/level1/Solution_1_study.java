@@ -222,20 +222,16 @@ class Solution_1_study {
 //        Mapping
 //        맵(map)은 스트림 내 요소들을 하나씩 특정 값으로 변환해줍니다. 이 때 값을 변환하기 위한 람다를 인자로 받습니다.
 //        <R> Stream<R> map(Function<? super T, ? extends R> mapper);
-
 //        스트림에 들어가 있는 값이 input 이 되어서 특정 로직을 거친 후 output 이 되어 (리턴되는) 새로운 스트림에 담기게 됩니다.
 //        이러한 작업을 맵핑(mapping)이라고 합니다.
-
 //        간단한 예제입니다. 스트림 내 String 의 toUpperCase 메소드를 실행해서 대문자로 변환한 값들이 담긴 스트림을 리턴합니다.
 
         Stream<String> stream5 = names.stream().map(String::toUpperCase);
+        System.out.println();
 
 
 //        다음처럼 요소 내 들어있는 Product 개체의 수량을 꺼내올 수도 있습니다. 각 ‘상품’을 ‘상품의 수량’으로 맵핑하는거죠.
-//        다음처럼 요소 내 들어있는 Product 개체의 수량을 꺼내올 수도 있습니다. 각 ‘상품’을 ‘상품의 수량’으로 맵핑하는거죠.
-//        다음처럼 요소 내 들어있는 Product 개체의 수량을 꺼내올 수도 있습니다. 각 ‘상품’을 ‘상품의 수량’으로 맵핑하는거죠.
 
-        Stream<Integer> stream = productList.stream().map(Product::getccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc)
 
 
 
@@ -264,6 +260,15 @@ class Solution_1_study {
             List<String> reportList = list.stream().filter(s -> s.startsWith(user + " ")).collect(Collectors.toList());
             return reportList.stream().filter(s -> count.getOrDefault(s.split(" ")[1], 0) >= k).count();
         }).mapToInt(Long::intValue).toArray();
+
+
+
+
+
+
+
+
+
     }
 }
 
