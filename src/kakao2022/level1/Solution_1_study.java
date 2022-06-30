@@ -227,11 +227,56 @@ class Solution_1_study {
 //        간단한 예제입니다. 스트림 내 String 의 toUpperCase 메소드를 실행해서 대문자로 변환한 값들이 담긴 스트림을 리턴합니다.
 
         Stream<String> stream5 = names.stream().map(String::toUpperCase);
-        System.out.println();
-
 
 //        다음처럼 요소 내 들어있는 Product 개체의 수량을 꺼내올 수도 있습니다. 각 ‘상품’을 ‘상품의 수량’으로 맵핑하는거죠.
 
+        Stream<Integer> stream6 = productList.stream().map(Product::getPno); // fuction, predicate
+
+//        map 이외에도 조금 더 복잡한 flatMap 메소드도 있습니다.
+//        <R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
+//        인자로 mapper를 받고 있는데, 리턴 타입이 Stream 입니다.
+//        즉, [새로운 스트림을 생성해서 리턴하는 람다를 넘겨야]합니다.
+//        flatMap 은 중첩 구조를 한 단계 제거하고 단일 컬렉션으로 만들어주는 역할을 합니다.
+//        이러한 작업을 플래트닝(flattening)이라고 합니다.
+
+//        다음과 같은 중첩된 리스트가 있습니다.
+        List<List<String>> list2 = Arrays.asList(Arrays.asList("a"), Arrays.asList("b")); // [[a], [b]]
+//        이를 flatMap을 사용해서 중첩 구조를 제거한 후 작업할 수 있습니다.
+        List<String> flatList = list2.stream().flatMap(Collection::stream).collect(Collectors.toList()); // [a, b]
+
+//        이번엔 객체에 적용해보겠습니다.
+//        예제에서는 학생
+//        1. 객체를 가진 스트림에서
+//        2. 학생의 국영수 점수를 뽑아 ### .map(m -> Stream.<Object>of(m.getValues)) !!!! map으로 다시 스트림을 만든다.
+//        3. 새로운 스트림을 만들어    ### 생성자. Stream.<T>of. Int/Long/DoubleStream.of(iterators...)
+//        평균을 구하는 코드입니다. 이는 map 메소드 자체만으로는 한번에 할 수 없는 기능입니다.
+//        ifPresent
+        List<Student> students = new ArrayList<>();
+        students.stream().flatMapToInt(student -> IntStream.of(student.getKor(), student.getEng(), student.getMath()))
+                .average().ifPresent(avg -> System.out.println(Math.round(avg * 10) / 10.0));
+
+//        Sorting
+//        정렬의 방법은 다른 정렬과 마찬가지로 Comparator 를 이용합니다.
+//        Stream<T> sorted ();
+//        Stream<T> sorted(Comparator<? super T > comprator);
+//        인자 없이 그냥 호출할 경우 오름차순으로 정렬합니다.
+
+//        IntStream은 boxing 해야 읽을 수 있다.
+        IntStream.of(95, 35, 6, 4, 36, 48, 3).sorted().boxed().collect(Collectors.toList()); // [3, 4, 6, 35, 36, 48, 95]
+
+//        인자를 넘기는 경우와 비교해보겠습니다.
+//        스트링 리스트에서 알파벳 순으로 정렬한 코드와 Comparator 를 넘겨서 역순으로 정렬한 코드입니다.
+        List<String> lang = Arrays.asList("Java", "Scala", "Groovy", "Python", "Go", "Swift");
+//        sorted(Collections)의 형태를 갖는다.
+        lang.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());// [Swift, Scala, Python, Java, Groovy, Go]
+
+//        Comparator 의 compare 메소드는 두 인자를 비교해서 값을 리턴합니다.
+//        int compare(T o1, T o2);
+
+//        기본적으로 Comparator 사용법과 동일합니다. 이를 이용해서 문자열 길이를 기준으로 정렬해보겠습니다.
+        lang.stream().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList());// [Go, Java, Scala, Swift, Groovy, Python]
+
+        lang.stream().sorted((s1, s2) -> s2.length() - s1.length()).collect(Collectors.toList());// [Groovy, Python, Scala, Swift, Java, Go]
 
 
 
@@ -246,9 +291,7 @@ class Solution_1_study {
 
 
 
-
-
-                List<String> list = Arrays.stream(report).distinct().collect(Collectors.toList());
+        List<String> list = Arrays.stream(report).distinct().collect(Collectors.toList());
         HashMap<String, Integer> count = new HashMap<>();
         for (String s : list) {
             String target = s.split(" ")[1];
@@ -260,13 +303,6 @@ class Solution_1_study {
             List<String> reportList = list.stream().filter(s -> s.startsWith(user + " ")).collect(Collectors.toList());
             return reportList.stream().filter(s -> count.getOrDefault(s.split(" ")[1], 0) >= k).count();
         }).mapToInt(Long::intValue).toArray();
-
-
-
-
-
-
-
 
 
     }
@@ -282,7 +318,23 @@ class Product {
     int getPno() {
         return pno;
     }
-    public void setPname(String pname) {
-        this.pname = pname;
+
+}
+
+class Student {
+    int kor;
+    int eng;
+    int math;
+
+    public int getKor() {
+        return kor;
+    }
+
+    public int getEng() {
+        return eng;
+    }
+
+    public int getMath() {
+        return math;
     }
 }
