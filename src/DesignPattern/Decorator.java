@@ -1,5 +1,6 @@
 //package DesignPattern;
 //
+// //https://dartpad.dev/?id=902cc662673ad8d2df75185dcbcc78a8
 //public class Decorator {
 //
 //    //interface
