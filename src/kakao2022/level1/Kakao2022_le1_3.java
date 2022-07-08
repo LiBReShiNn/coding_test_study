@@ -15,6 +15,7 @@ class Kakao2022_le1_3 {
         }
 
         Map<String, List<String>> reportCollection = new HashMap<>(); // { "a":["b","c"], "b":["c"] }
+
         List<String> badsFromReporter = new ArrayList<>(); // ["b","c"] / ["c"] / ....
 
         List<String> totalBads = getTotalBads(report, reportCollection, badsFromReporter);

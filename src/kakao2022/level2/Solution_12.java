@@ -1,7 +1,10 @@
 package kakao2022.level2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 public class Solution_12 {
     public int[] solution(int[] fees, String[] records) {

@@ -40,8 +40,9 @@ public class Solution_11 {
             return new Parking(split[0], split[1], split[2]);
         }).collect(Collectors.groupingBy(Parking::getNumber));
 
-        return collect.keySet().stream().sorted().mapToInt(s -> getPrice(fees,collect.get(s))).toArray();
+        return collect.keySet().stream().sorted().mapToInt(s -> getPrice(fees, collect.get(s))).toArray();
     }
+
     private int getPrice(int[] fees, List<Parking> parking) {
         String number = parking.get(0).getNumber();
         if (parking.size() % 2 == 1)

@@ -9,18 +9,18 @@ public class Solution_9 {
         Map<String, Integer> times = new HashMap<>();
         List<String> cars = new ArrayList<>();
 
-        for(String record : records) {
+        for (String record : records) {
             String[] rc = record.split(" ");
             int time = getMin(rc[0]);
             String car = rc[1];
 
-            if(!cars.contains(car)) {
+            if (!cars.contains(car)) {
                 cars.add(car);
                 times.put(car, 0);
             }
 
-            if(parking.containsKey(car)) {
-                times.put( car, times.get(car)+(time-parking.get(car)) );
+            if (parking.containsKey(car)) {
+                times.put(car, times.get(car) + (time - parking.get(car)));
                 parking.remove(car);
             } else {
                 parking.put(car, time);
@@ -31,12 +31,12 @@ public class Solution_9 {
         int[] ret = new int[cars.size()];
         Collections.sort(cars);
         //[180, 5000, 10, 600]
-        for(int i=0 ; i<cars.size() ; i++) {
+        for (int i = 0; i < cars.size(); i++) {
             ret[i] = fees[1];
             String car = cars.get(i);
-            int time = times.get(car)-fees[0];
-            if(parking.containsKey(car)) time += (lastTime-parking.get(car));
-            if(time>0) ret[i] += (Math.ceil(time/(fees[2]*1.0))*fees[3]);
+            int time = times.get(car) - fees[0];
+            if (parking.containsKey(car)) time += (lastTime - parking.get(car));
+            if (time > 0) ret[i] += (Math.ceil(time / (fees[2] * 1.0)) * fees[3]);
         }
 
         return ret;
@@ -44,6 +44,6 @@ public class Solution_9 {
 
     public int getMin(String time) {
         String[] t = time.split(":");
-        return Integer.valueOf(t[0])*60+Integer.valueOf(t[1]);
+        return Integer.valueOf(t[0]) * 60 + Integer.valueOf(t[1]);
     }
 }

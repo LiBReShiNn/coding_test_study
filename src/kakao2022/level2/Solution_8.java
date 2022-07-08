@@ -33,6 +33,6 @@ public class Solution_8 {
 
     private int calculateFee(int[] fees, int minutes) {
         if (minutes <= fees[0]) return fees[1];
-        return fees[1] + (int) Math.ceil((minutes - fees[0]) / (double)fees[2]) * fees[3];
+        return fees[1] + (int) Math.ceil((minutes - fees[0]) / (double) fees[2]) * fees[3];
     }
 }
