@@ -280,17 +280,6 @@ class Solution_1_study {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         List<String> list = Arrays.stream(report).distinct().collect(Collectors.toList());
         HashMap<String, Integer> count = new HashMap<>();
         for (String s : list) {

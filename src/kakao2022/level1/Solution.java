@@ -32,7 +32,6 @@ class Solution {
             }
         }
 
-
         for (int i = 0; i < id_list.length; i++) {
             badsFromReporter = reportCollection.get(id_list[i]);
             if (badsFromReporter != null)

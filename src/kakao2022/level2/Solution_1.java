@@ -3,6 +3,9 @@ package kakao2022.level2;
 import java.util.TreeMap;
 
 public class Solution_1 {
+
+    //fees 기본 시간(분)	기본 요금(원)	단위 시간(분)	단위 요금(원)
+    //records 시각 차량번호 내역
     public int timeToInt(String time) {
         String temp[] = time.split(":");
         return Integer.parseInt(temp[0]) * 60 + Integer.parseInt(temp[1]);
