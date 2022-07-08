@@ -1,4 +1,4 @@
-package kakao2022.level2;
+package kakao2022.level2_1;
 
 import java.util.Arrays;
 import java.util.HashMap;
