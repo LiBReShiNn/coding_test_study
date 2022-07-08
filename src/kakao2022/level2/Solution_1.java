@@ -13,6 +13,10 @@ public class Solution_1 {
 
     public int[] solution(int[] fees, String[] records) {
 
+        // TreeMap 흑적트리. 자동으로 정렬되어서 값이 입력된다. (오름차순, 유니코드 순)
+        // 입력시 자동정렬 수행되므로 HashMap보다 추가, 삭제가 오래 걸린다.
+        // 부모 키값과 비교하여 키값이 낮은 것은 왼쪽 높은 것은 오르쪽 자식 노드에 Map.Entry객체를 저장한다
+        
         TreeMap<String, Integer> map = new TreeMap<>();
 
         for (String record : records) {
