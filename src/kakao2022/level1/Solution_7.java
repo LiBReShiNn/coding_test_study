@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class Solution_7 {
+
+    // todo
     public int[] solution(String[] idList, String[] report, int k) {
         Supplier<Stream<String[]>> reportPairList = () -> Arrays.stream(report).distinct().map(s -> s.split(" "));
         List<String> blackList = reportPairList.get().collect(Collectors.groupingBy(strings -> strings[1])).entrySet().stream().filter(stringListEntry -> stringListEntry.getValue().size() >= k).map(Map.Entry::getKey).collect(Collectors.toList());
