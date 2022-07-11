@@ -1,4 +1,4 @@
-package kakao2021.level_1;
+package kakao2021.level_1_1;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

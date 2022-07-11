@@ -1,4 +1,4 @@
-package kakao2021.level_1;
+package kakao2021.level_1_1;
 
 public class Solution_2 {
     public String solution(String new_id) {
