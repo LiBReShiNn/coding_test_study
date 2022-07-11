@@ -29,6 +29,7 @@ public class Solution {
             }
         }
 
+//        recordsList.stream().collect(Collectors.groupingBy(r->r.getAction())).entrySet().stream()......
         List<Records> in = recordsList.stream().filter(r -> r.getAction().equals("IN")).collect(Collectors.toList());
         List<Records> out = recordsList.stream().filter(r -> r.getAction().equals("OUT")).collect(Collectors.toList());
 
