@@ -1,0 +1,18 @@
+package programmers_exam.examples;
+
+public class Solution_matrix {
+
+    public int[][] solution(int[][] arr1, int[][] arr2) {
+
+        // arr[row][col]
+        // arr sum -> new int[col][row]
+        int[][] answer = new int[arr1.length][arr1[0].length];
+        for (int r = 0; r < arr1.length; r++) {
+            for (int c = 0; c < arr1[r].length; c++) {
+                answer[r][c] =arr1[r][c] + arr2[r][c];
+            }
+        }
+        return answer;
+    }
+
+}
