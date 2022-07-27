@@ -6,8 +6,8 @@ public class Executor {
 
     public static void main(String[] args) {
 
-//        Solution sol = new Solution();
-        Solution_1_study sol = new Solution_1_study();
+        Solution sol = new Solution();
+
 
         String[] id_list = {"muzi", "frodo", "apeach", "neo"};
 //        String[] id_list = {"con", "ryan"};
