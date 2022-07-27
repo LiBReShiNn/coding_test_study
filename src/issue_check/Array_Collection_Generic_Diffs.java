@@ -30,12 +30,19 @@ public class Array_Collection_Generic_Diffs {
         System.out.println(sum(myLongs));// 정상 응답.
         System.out.println(sum(myDoubles));// 정상 응답.
 
-        List<Integer> myIntsG = Arrays.asList(1,2,3,4,5);
-        List<Long> myLongsG = Arrays.asList(1L, 2L, 3L, 4L, 5L);
-        List<Double> myDoublesG = Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0);
+        // java 9 이상 허용 Collection.of(Elements...)
+        List<Integer> myIntsG = List.of(1,2,3,4,5);
+        List<Long> myLongsG = List.of(1L, 2L, 3L, 4L, 5L);
+        List<Double> myDoublesG = List.of(1.0, 2.0, 3.0, 4.0, 5.0);
+
+        // java 8 허용 안됨 Arrays.asList
+//        List<Integer> myIntsG = Arrays.asList(1,2,3,4,5);
+//        List<Long> myLongsG = Arrays.asList(1L, 2L, 3L, 4L, 5L);
+//        List<Double> myDoublesG = Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0);
 //        System.out.println(sumG(myIntsG)); // 컴파일 에러
 //        System.out.println(sumG(myLongsG)); // 컴파일 에러
 //        System.out.println(sumG(myDoublesG)); // 컴파일 에러
+
 
     }
 

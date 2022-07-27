@@ -54,7 +54,7 @@ public class Genaric_Bridge_Method implements Comparator<Integer> {
 //    Comparator의 compare 메소드의 매개변수 타입은 Object로 바뀔 것입니다.
 //    이러한 메소드 시그니처 사이에 불일치를 없애기 위해서
 //    컴파일러는 런타임에 해당 제네릭 타입의 타입 소거를 위한 bridge method를 만들어 줍니다.
-    public int compare(Object a, Object b) {
-        return compare((Integer)a, (Integer)b);
-    }
+//    public int compare(Object a, Object b) {
+//        return compare((Integer)a, (Integer)b);
+//    }
 }
