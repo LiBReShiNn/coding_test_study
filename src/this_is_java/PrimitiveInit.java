@@ -4,12 +4,12 @@ public class PrimitiveInit {
 
     public static void main(String[] args) {
 
-        String a = ''; // char is not String
+//        String a = ''; // char is not String
         String b = "";
-        char c = ''; // error
-        int d = null; // error primitive는 객체가 아니다. null 불가
+//        char c = ''; // error
+//        int d = null; // error primitive는 객체가 아니다. null 불가
 
-        float e = 3.14; // error
+//        float e = 3.14; // error
 
         // 정수타입
         byte h = 1; // 1byte
@@ -39,10 +39,20 @@ public class PrimitiveInit {
         char o = (char) n; // 'B'
 
         // 연산자 우선순위
-        
 
+                byte b1 = 1;
+                byte b2 = 2;
 
+//                ByteProcess plus1 = (x, y) -> {return x + y;};
+                ByteProcess plus1 = Integer::sum;
+                int r = plus1.bytePlus(b1, b2);
 
+        System.out.println(r);
 
     }
+    @FunctionalInterface
+    interface ByteProcess {
+        int bytePlus(byte x, byte y);
+    }
+
 }
