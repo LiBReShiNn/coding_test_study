@@ -18,10 +18,10 @@ public class Executor {
             return value.length();
         }
 
-        @Override
-        public String methodDefault(int value) {
-            String str = InterfaceName.super.methodDefault(value);
-            return str + " 구현체";
-        }
+//        @Override
+//        public String methodDefault(int value) {
+//            String str = InterfaceName.super.methodDefault(value);
+//            return str + " 구현체";
+//        }
     }
 }
